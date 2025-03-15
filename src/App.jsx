@@ -1,11 +1,13 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './components/Main';
+import Agrifood from './components/subpages/Agrifood';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/KosmodeHealth">
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="Agrifood" element={<Agrifood />} />
       </Routes>
     </Router>
   );
