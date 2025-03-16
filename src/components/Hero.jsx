@@ -1,22 +1,70 @@
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+
 const Hero = () => {
+  const heroRef = useRef(null);
+  const overlayRef = useRef(null);
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    // Step 1: Burst of green energy (overlay animation)
+    tl.fromTo(
+      overlayRef.current,
+      { scale: 1, opacity: 1, backgroundColor: "#16a34a" },
+      {
+        scale: 1.5, // Reduced scale
+        opacity: 0,
+        duration: 1.5,
+        ease: "power4.out",
+      }
+    );
+
+    // Step 2: Animate the heading (explosive entrance)
+    tl.fromTo(
+      headingRef.current,
+      { scale: 0.5, opacity: 0, rotation: -10 },
+      { scale: 1, opacity: 1, rotation: 0, duration: 1 },
+      "-=0.5"
+    );
+
+    // Step 3: Animate the paragraph (slide up with fade)
+    tl.fromTo(
+      paragraphRef.current,
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1 },
+      "-=0.5"
+    );
+  }, []);
+
   return (
-    <div className="w-screen pt-24 bg-gradient-to-b from-green-50 to-white">
+    <div
+      ref={heroRef}
+      className="w-screen pt-24 bg-gradient-to-b from-green-50 to-white relative overflow-hidden"
+    >
+      {/* Green burst overlay */}
+      <div
+        ref={overlayRef}
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-green-600 opacity-0"
+        style={{ willChange: "transform" }}
+      ></div>
+
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-green-800 mb-6">
+          <h1
+            ref={headingRef}
+            className="text-4xl md:text-6xl font-bold text-green-800 mb-6 transform scale-50 opacity-0"
+          >
             Expanding Access to Health from Nature
           </h1>
-          <p className="text-xl md:text-2xl text-green-700 mb-8 max-w-3xl mx-auto">
+          <p
+            ref={paragraphRef}
+            className="text-xl md:text-2xl text-green-700 mb-8 max-w-3xl mx-auto opacity-0"
+          >
             Sustainable solutions for human nutrition and health through innovative technology
           </p>
-          <div className="flex flex-col md:flex-row justify-center gap-4">
-            <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
-              Learn More
-            </button>
-            <a href="mailto:info@kosmodehealth.com?subject=Inquiry&body=Hello%2C%20I%20would%20like%20more%20information%20about%20your%20services." className="bg-white hover:bg-green-100 text-green-600 font-bold py-3 px-6 rounded-lg border border-green-600 transition duration-300">
-              Contact Us
-            </a>
-          </div>
         </div>
       </div>
     </div>

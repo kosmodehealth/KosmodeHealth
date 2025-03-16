@@ -1,19 +1,98 @@
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 const Founders = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const dividerRef = useRef(null);
+  const founderRefs = useRef([]);
+
+  useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Title and divider animation
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: -50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+
+    gsap.fromTo(
+      dividerRef.current,
+      { width: 0 },
+      {
+        width: 96,
+        duration: 1,
+        delay: 0.3,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+
+    // Founders cards staggered animation
+    gsap.fromTo(
+      founderRefs.current,
+      { opacity: 0, y: 100 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 60%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  // Reset refs array
+  const setFounderRef = (el) => {
+    if (el && !founderRefs.current.includes(el)) {
+      founderRefs.current.push(el);
+    }
+  };
+
   return (
-    <section id="founders" className="py-16 bg-green-50">
+    <section id="founders" className="py-16 bg-green-50" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Our Founders</h2>
-          <div className="w-24 h-1 bg-green-500 mx-auto"></div>
+          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4" ref={titleRef}>
+            Our Founders
+          </h2>
+          <div className="h-1 bg-green-500 mx-auto" ref={dividerRef}></div>
         </div>
-        
+
         <div className="grid md:grid-cols-2 gap-12">
           {/* Founder Florence Leong */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div 
+            className="bg-white rounded-lg shadow-md overflow-hidden" 
+            ref={setFounderRef}
+          >
             <div className="p-8">
               <div className="w-64 h-64 rounded-full bg-green-200 mx-auto mb-6 flex items-center justify-center overflow-hidden">
                 <img
-                  src="./images/florence-leong.jpg"
+                  src="/KosmodeHealth/images/florence-leong.jpg"
                   alt="Florence Leong"
                   className="w-full h-full object-cover"
                 />
@@ -30,13 +109,16 @@ const Founders = () => {
               </p>
             </div>
           </div>
-          
+
           {/* Founder "Dr. Huang Dejian */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div 
+            className="bg-white rounded-lg shadow-md overflow-hidden"
+            ref={setFounderRef}
+          >
             <div className="p-8">
               <div className="w-64 h-64 rounded-full bg-green-200 mx-auto mb-6 flex items-center justify-center overflow-hidden">
                 <img
-                  src="./images/HUANG-Dejian-1.jpg"
+                  src="/KosmodeHealth/images/HUANG-Dejian-1.jpg"
                   alt="Dr. Huang Dejian"
                   className="w-full h-full object-cover"
                 />

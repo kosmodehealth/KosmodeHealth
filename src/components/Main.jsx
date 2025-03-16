@@ -7,11 +7,17 @@ import Technologies from './Technologies';
 import Industries from './Industries';
 import Products from './Products';
 import Footer from './Footer';
+import CallToAction from './subpages/CallToAction';
 
 const Main = () => {
   return (
     <div className="bg-white min-h-screen">
-      <Navbar />
+      <div className="block sm:hidden">
+        <CallToAction />
+      </div>
+      <div className="hidden sm:block">
+        <Navbar />
+      </div>
       <Hero />
       <About />
       <Founders />

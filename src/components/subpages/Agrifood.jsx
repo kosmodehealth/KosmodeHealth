@@ -1,21 +1,83 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from '../Footer';
-import { ArrowRight, Recycle, Beaker, Utensils, BarChart, Home } from 'lucide-react';
+import { Recycle, Beaker, BarChart, Home, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Agrifood = () => {
   const location = useLocation();
+  const [activeIndex, setActiveIndex] = useState(0);
+  
+  const products = [
+    {
+      id: 1,
+      title: "Soba",
+      image: "./images/soba.JPG"
+    },
+    {
+      id: 2,
+      title: "Angel Hair",
+      image: "./images/angelhair.jpg"
+    },
+    {
+      id: 3,
+      title: "Premix Powder",
+      image: "./images/premix.jpeg"
+    },
+    {
+      id: 4,
+      title: "Dry Noodles",
+      image: "./images/drynoodles.jpeg"
+    },
+    {
+      id: 5,
+      title: "Rice",
+      image: "./images/rice.jpg"
+    }
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+  // Auto-rotate carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % products.length);
+    }, 4000);
+    
+    return () => clearInterval(interval);
+  }, [products.length]);
+
+  const nextSlide = () => {
+    setActiveIndex((current) => (current + 1) % products.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex((current) => (current - 1 + products.length) % products.length);
+  };
+
+  const getTransform = (index) => {
+    // Calculate position based on index relative to active index
+    const diff = (index - activeIndex + products.length) % products.length;
+    if (diff === 0) return "translateZ(150px) scale(1)"; // Active card
+    if (diff === 1 || diff === products.length - 1) return `translateX(${diff === 1 ? '150px' : '-150px'}) translateZ(0) scale(0.85) rotateY(${diff === 1 ? '-15deg' : '15deg'})`; // Adjacent cards
+    return "translateZ(-150px) scale(0.7) opacity-50"; // Far cards
+  };
+
+  const getZIndex = (index) => {
+    const diff = (index - activeIndex + products.length) % products.length;
+    if (diff === 0) return 30; // Active card
+    if (diff === 1 || diff === products.length - 1) return 20; // Adjacent cards
+    return 10; // Far cards
+  };
+
   return (
     <div className="w-screen bg-gray-50">
       {/* Navigation */}
       <nav className="bg-green-700 text-white py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <h2 className="font-bold text-xl">KosmodeHealth</h2>
-          <Link to="/KosmodeHealth/" className="flex items-center gap-2 bg-white text-green-700 py-2 px-4 rounded hover:bg-green-100 transition-colors">
+          <Link to="/" className="flex items-center gap-2 bg-white text-green-700 py-2 px-4 rounded hover:bg-green-100 transition-colors">
             <Home size={18} />
             Home
           </Link>
@@ -29,9 +91,6 @@ const Agrifood = () => {
           <p className="text-lg md:text-xl max-w-3xl mb-8">
             Transforming food processing waste into sustainable nutrition solutions for a growing world.
           </p>
-          <button className="bg-white text-green-700 font-semibold py-3 px-6 rounded-lg flex items-center gap-2 hover:bg-green-100 transition-colors">
-            Learn More <ArrowRight size={18} />
-          </button>
         </div>
       </div>
 
@@ -138,44 +197,54 @@ const Agrifood = () => {
       {/* Products Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center text-gray-800">Product Portfolio</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center text-gray-800">Our Sustainable Products</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="bg-green-600 h-48 flex items-center justify-center">
-                <Recycle size={64} className="text-white" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Sustainably Derived Functional Ingredients</h3>
-                <p className="text-gray-700 text-sm">
-                  Repurposed from Food Processing Wastes for sustainable nutrition solutions.
-                </p>
-              </div>
+          {/* 3D Carousel Container */}
+          <div className="relative h-96 mb-8 perspective-1000">
+            {/* Carousel Navigation */}
+            <div className="absolute z-40 flex justify-between w-full top-1/2 transform -translate-y-1/2 px-4">
+              <button 
+                onClick={prevSlide}
+                className="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 focus:outline-none"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button 
+                onClick={nextSlide}
+                className="p-2 rounded-full bg-green-600 text-white hover:bg-green-700 focus:outline-none"
+              >
+                <ChevronRight size={24} />
+              </button>
             </div>
             
-            <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="bg-green-600 h-48 flex items-center justify-center">
-                <Beaker size={64} className="text-white" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Ready-to-manufacture Sustainable Functional Food Premixes</h3>
-                <p className="text-gray-700 text-sm">
-                  Including our innovative W0W® premixes for convenient functional food production.
-                </p>
-              </div>
+            {/* Carousel Items */}
+            <div className="relative w-full h-full preserve-3d">
+              {products.map((product, index) => (
+                <div 
+                  key={product.id}
+                  className="absolute w-full md:w-2/3 max-w-lg inset-0 mx-auto transition-all duration-500 ease-out shadow-lg rounded-lg overflow-hidden bg-white"
+                  style={{
+                    transform: getTransform(index),
+                    zIndex: getZIndex(index),
+                    opacity: (index - activeIndex + products.length) % products.length === 0 ? 1 : 
+                           ((index - activeIndex + products.length) % products.length === 1 || 
+                            (index - activeIndex + products.length) % products.length === products.length - 1) ? 0.8 : 0.5,
+                    transition: 'all 0.6s ease-out'
+                  }}
+                >
+                  <img 
+                    src={product.image} 
+                    alt={product.title} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
             </div>
-            
-            <div className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="bg-green-600 h-48 flex items-center justify-center">
-                <Utensils size={64} className="text-white" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-3 text-gray-800">Sustainable Functional Food</h3>
-                <p className="text-gray-700 text-sm">
-                  Products like W0W® noodle, clinically proven to not cause post-consumption blood sugar movement.
-                </p>
-              </div>
-            </div>
+          </div>
+          
+          {/* Caption for Active Item */}
+          <div className="text-center py-4 px-4 bg-green-50 rounded-lg max-w-2xl mx-auto">
+            <h3 className="text-xl font-semibold text-green-700">{products[activeIndex].title}</h3>
           </div>
         </div>
       </section>

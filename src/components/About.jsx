@@ -1,16 +1,113 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const About = () => {
+  // Refs for animation targets
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const dividerRef = useRef(null);
+  const leftColumnRef = useRef(null);
+  const rightColumnRef = useRef(null);
+  
+  useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Title and divider animation
+    gsap.fromTo(
+      titleRef.current,
+      { y: -50, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+        }
+      }
+    );
+    
+    gsap.fromTo(
+      dividerRef.current,
+      { width: 0, opacity: 0 },
+      { 
+        width: "6rem", 
+        opacity: 1, 
+        duration: 1.2,
+        delay: 0.3,
+        scrollTrigger: {
+          trigger: dividerRef.current,
+          start: "top 80%",
+        }
+      }
+    );
+    
+    // Left column text animation
+    gsap.fromTo(
+      leftColumnRef.current.querySelectorAll('p'),
+      { x: -50, opacity: 0 },
+      { 
+        x: 0, 
+        opacity: 1, 
+        duration: 1,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: leftColumnRef.current,
+          start: "top 75%",
+        }
+      }
+    );
+    
+    // Right column card animation
+    gsap.fromTo(
+      rightColumnRef.current,
+      { x: 50, opacity: 0 },
+      { 
+        x: 0, 
+        opacity: 1, 
+        duration: 1,
+        scrollTrigger: {
+          trigger: rightColumnRef.current,
+          start: "top 75%",
+        }
+      }
+    );
+    
+    // Mission sections animation
+    gsap.fromTo(
+      rightColumnRef.current.querySelectorAll('div > div'),
+      { y: 30, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 0.8,
+        stagger: 0.4,
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: rightColumnRef.current,
+          start: "top 70%",
+        }
+      }
+    );
+    
+    // Clean up animations on component unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
-    <section id="about" className="w-screen py-16 bg-white">
+    <section id="about" className="w-screen py-16 bg-white" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">About KosmodeHealth</h2>
-          <div className="w-24 h-1 bg-green-500 mx-auto"></div>
+          <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-green-800 mb-4">About KosmodeHealth</h2>
+          <div ref={dividerRef} className="h-1 bg-green-500 mx-auto"></div>
         </div>
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <div ref={leftColumnRef}>
             <p className="text-lg text-gray-700 mb-6">
               KosmodeHealth is a deep-tech startup originating from the National University of Singapore's Food Science and Technology Department. We are committed to expanding access to health from nature, focusing on sustainability in both human health and environmental well-being.
             </p>
@@ -19,7 +116,7 @@ const About = () => {
             </p>
           </div>
           
-          <div className="bg-green-50 p-8 rounded-lg shadow-md">
+          <div ref={rightColumnRef} className="bg-green-50 p-8 rounded-lg shadow-md">
             <h3 className="text-2xl font-bold text-green-800 mb-6">Our Mission and Beliefs</h3>
             
             <div className="mb-6">

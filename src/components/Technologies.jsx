@@ -1,17 +1,118 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Technologies = () => {
+  // Refs for our animated elements
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const dividerRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  // Register ScrollTrigger plugin
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Animation for the heading and divider
+    gsap.fromTo(
+      titleRef.current,
+      { y: 50, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 1, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%"
+        }
+      }
+    );
+
+    gsap.fromTo(
+      dividerRef.current,
+      { width: 0, opacity: 0 },
+      { 
+        width: "6rem", 
+        opacity: 1, 
+        duration: 1, 
+        delay: 0.3, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: dividerRef.current,
+          start: "top 80%"
+        }
+      }
+    );
+
+    // Staggered animation for the cards
+    gsap.fromTo(
+      cardsRef.current,
+      { y: 80, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 0.8, 
+        stagger: 0.2, 
+        ease: "back.out(1.4)",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%"
+        }
+      }
+    );
+
+    // Hover animations for cards
+    cardsRef.current.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, { 
+          y: -10, 
+          scale: 1.03, 
+          boxShadow: "0 10px 30px rgba(0, 128, 0, 0.1)", 
+          duration: 0.3 
+        });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, { 
+          y: 0, 
+          scale: 1, 
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", 
+          duration: 0.3 
+        });
+      });
+    });
+
+    return () => {
+      // Cleanup event listeners
+      cardsRef.current.forEach(card => {
+        card.removeEventListener('mouseenter', () => {});
+        card.removeEventListener('mouseleave', () => {});
+      });
+    };
+  }, []);
+
+  // Function to add cards to the refs array
+  const addToCardsRefs = (el) => {
+    if (el && !cardsRef.current.includes(el)) {
+      cardsRef.current.push(el);
+    }
+  };
+
   return (
-    <section id="technologies" className="py-16 bg-white">
+    <section ref={sectionRef} id="technologies" className="py-16 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Our Technologies</h2>
-          <div className="w-24 h-1 bg-green-500 mx-auto"></div>
+          <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Our Technologies</h2>
+          <div ref={dividerRef} className="h-1 bg-green-500 mx-auto"></div>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
           {/* Technology 1 */}
-          <div className="bg-green-50 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+          <div 
+            ref={addToCardsRefs} 
+            className="bg-green-50 rounded-lg shadow-md p-6 transition duration-300"
+          >
             <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mb-6">
               <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
@@ -28,7 +129,10 @@ const Technologies = () => {
           </div>
           
           {/* Technology 2 */}
-          <div className="bg-green-50 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+          <div 
+            ref={addToCardsRefs} 
+            className="bg-green-50 rounded-lg shadow-md p-6 transition duration-300"
+          >
             <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mb-6">
               <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M13 7H7v6h6V7z" />
@@ -46,7 +150,10 @@ const Technologies = () => {
           </div>
           
           {/* Technology 3 */}
-          <div className="bg-green-50 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+          <div 
+            ref={addToCardsRefs} 
+            className="bg-green-50 rounded-lg shadow-md p-6 transition duration-300"
+          >
             <div className="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mb-6">
               <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />

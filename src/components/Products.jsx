@@ -1,29 +1,165 @@
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 const Products = () => {
+  // Refs for our animated elements
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const dividerRef = useRef(null);
+  const cardRef = useRef(null);
+  const imageRef = useRef(null);
+  const contentRef = useRef(null);
+  const tagsRef = useRef(null);
+
+  useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Initial animation for section appearance
+    gsap.fromTo(
+      sectionRef.current,
+      { opacity: 0 },
+      { 
+        opacity: 1, 
+        duration: 0.8, 
+        ease: "power1.out" 
+      }
+    );
+    
+    // Title and divider animation
+    const titleTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: titleRef.current,
+        start: "top bottom-=100",
+        toggleActions: "play none none none"
+      }
+    });
+    
+    titleTl.fromTo(
+      titleRef.current,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, ease: "back.out(1.2)" }
+    ).fromTo(
+      dividerRef.current,
+      { width: 0 },
+      { width: 96, duration: 0.5, ease: "power1.out" },
+      "-=0.3"
+    );
+    
+    // Card reveal animation
+    const cardTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: cardRef.current,
+        start: "top bottom-=50",
+        toggleActions: "play none none none"
+      }
+    });
+    
+    cardTl.fromTo(
+      cardRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
+    );
+    
+    // Image animation
+    gsap.fromTo(
+      imageRef.current,
+      { scale: 0.8, opacity: 0 },
+      { 
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        delay: 0.3,
+        ease: "elastic.out(1, 0.75)"
+      }
+    );
+    
+    // Content stagger animation
+    gsap.fromTo(
+      contentRef.current.children,
+      { y: 20, opacity: 0 },
+      { 
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 0.6,
+        delay: 0.5,
+        ease: "power1.out"
+      }
+    );
+    
+    // Tags animation
+    gsap.fromTo(
+      tagsRef.current.children,
+      { scale: 0, opacity: 0 },
+      { 
+        scale: 1,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 0.5,
+        delay: 0.8,
+        ease: "back.out(1.7)"
+      }
+    );
+
+    // Hover animations for the card
+    const card = cardRef.current;
+    card.addEventListener('mouseenter', () => {
+      gsap.to(card, { y: -10, duration: 0.3, ease: "power2.out" });
+      gsap.to(imageRef.current, { scale: 1.05, duration: 0.4 });
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, { y: 0, duration: 0.5, ease: "power2.out" });
+      gsap.to(imageRef.current, { scale: 1, duration: 0.4 });
+    });
+    
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      const cardCleanup = cardRef.current;
+      if (cardCleanup) {
+        cardCleanup.removeEventListener('mouseenter', () => {});
+        cardCleanup.removeEventListener('mouseleave', () => {});
+      }
+    };
+  }, []);
+
   return (
-    <section id="products" className="py-16 bg-white">
+    <section ref={sectionRef} id="products" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Our Products</h2>
-          <div className="w-24 h-1 bg-green-500 mx-auto"></div>
+          <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Our Products</h2>
+          <div ref={dividerRef} className="w-24 h-1 bg-green-500 mx-auto"></div>
         </div>
         
         <div className="max-w-2xl mx-auto">
-          <div className="bg-green-50 rounded-lg shadow-md overflow-hidden">
-            <div className="h-64 bg-green-200 flex items-center justify-center">
-              <img src="/images/noodles.png" alt="W0W Noodles" className="max-h-full" />
+          <div ref={cardRef} className="bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div className="h-64 bg-green-200 flex items-center justify-center overflow-hidden">
+              <img 
+                ref={imageRef} 
+                src="/KosmodeHealth/images/noodles.png" 
+                alt="W0W Noodles" 
+                className="max-h-full transition-transform duration-300"
+              />
             </div>
-            <div className="p-6">
+            <div ref={contentRef} className="p-6">
               <h3 className="text-2xl font-bold text-green-800 mb-4">W0W® Noodles</h3>
-              <div className="mb-4">
+              <div ref={tagsRef} className="mb-4">
                 <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">Zero Glycemic Response</span>
                 <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">High Protein</span>
-                <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Starchless</span>
+                <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">High Fiber</span>
+                <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Low Carbs</span>
               </div>
               <p className="text-gray-700 mb-6">
                 Starchless protein-fiber noodles made from valorized spent barley grains. Clinically validated to have zero glycemic response, catering to the nutritional needs of aging and diabetic populations.
               </p>
               <div className="flex justify-center">
-                <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                <button
+                  className="button-85"
+                  onClick={() => window.location.href = 'https://www.w0wnoodle.com/'}
+                >
                   Learn More
                 </button>
               </div>
