@@ -127,16 +127,16 @@ const Products = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="products" className="py-16 bg-white">
+    <section ref={sectionRef} id="products" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Our Products</h2>
-          <div ref={dividerRef} className="w-24 h-1 bg-green-500 mx-auto"></div>
+          <h2 ref={titleRef} className="text-3xl md:text-4xl font-bold text-[#8f9962] mb-4">Our Products</h2>
+          <div ref={dividerRef} className="w-24 h-1 bg-[#8f9962] mx-auto"></div>
         </div>
         
         <div className="max-w-2xl mx-auto">
-          <div ref={cardRef} className="bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-            <div className="h-64 bg-green-200 flex items-center justify-center overflow-hidden">
+          <div ref={cardRef} className="bg-[#8f9962] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div className="h-64 bg-[#ded9ba] flex items-center justify-center overflow-hidden">
               <img 
                 ref={imageRef} 
                 src="/KosmodeHealth/images/noodles.png" 
@@ -145,14 +145,14 @@ const Products = () => {
               />
             </div>
             <div ref={contentRef} className="p-6">
-              <h3 className="text-2xl font-bold text-green-800 mb-4">W0W® Noodles</h3>
+              <h3 className="text-2xl font-bold text-[#ded9ba] mb-4">W0W® Noodles</h3>
               <div ref={tagsRef} className="mb-4">
-                <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">Zero Glycemic Response</span>
-                <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">High Protein</span>
-                <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold mr-2">High Fiber</span>
-                <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">Low Carbs</span>
+                <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold mr-2">Zero Glycemic Response</span>
+                <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold mr-2">High Protein</span>
+                <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold mr-2">High Fiber</span>
+                <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold">Low Carbs</span>
               </div>
-              <p className="text-gray-700 mb-6">
+              <p className="text-white mb-6">
                 Starchless protein-fiber noodles made from valorized spent barley grains. Clinically validated to have zero glycemic response, catering to the nutritional needs of aging and diabetic populations.
               </p>
               <div className="flex justify-center">

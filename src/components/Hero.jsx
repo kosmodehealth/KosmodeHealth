@@ -55,13 +55,13 @@ const Hero = () => {
         <div className="text-center">
           <h1
             ref={headingRef}
-            className="text-4xl md:text-6xl font-bold text-green-800 mb-6 transform scale-50 opacity-0"
+            className="text-4xl md:text-6xl font-bold text-[#8f9962] mb-6 transform scale-50 opacity-0"
           >
-            Expanding Access to Health from Nature
+            Kosmode Health
           </h1>
           <p
             ref={paragraphRef}
-            className="text-xl md:text-2xl text-green-700 mb-8 max-w-3xl mx-auto opacity-0"
+            className="-mb-20 text-xl md:text-2xl text-[#8f9962] max-w-3xl mx-auto opacity-0"
           >
             Sustainable solutions for human nutrition and health through innovative technology
           </p>

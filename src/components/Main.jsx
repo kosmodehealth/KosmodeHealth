@@ -5,7 +5,6 @@ import About from './About';
 import Founders from './Founders';
 import Technologies from './Technologies';
 import Industries from './Industries';
-import Products from './Products';
 import Footer from './Footer';
 import CallToAction from './subpages/CallToAction';
 
@@ -23,7 +22,6 @@ const Main = () => {
       <Founders />
       <Technologies />
       <Industries />
-      <Products />
       <Footer />
     </div>
   );

@@ -10,12 +10,12 @@ const Biomedical = () => {
   const products = [
     {
       id: 1,
-      title: "PCL Zein Scaffold",
+      title: "Customised Micron-Sized Scaffolds",
       image: "./images/pclzein.jpeg"
     },
     {
       id: 2,
-      title: "Bioink Samples",
+      title: "Plant Protein Composite (PPC) scaffolds",
       image: "./images/bioink.jpg"
     },
   ];
@@ -59,7 +59,7 @@ const Biomedical = () => {
   return (
     <div className="w-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-green-700 text-white py-4">
+      <nav className="bg-[#8f9962] text-white py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <h2 className="font-bold text-xl">KosmodeHealth</h2>
           <Link to="/" className="flex items-center gap-2 bg-white text-green-700 py-2 px-4 rounded hover:bg-green-100 transition-colors">
@@ -70,7 +70,7 @@ const Biomedical = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-green-700 to-green-500 text-white">
+      <div className="bg-gradient-to-r from-[#8f9962] to-[#ded9ba] text-white">
         <div className="container mx-auto px-4 py-16 md:py-24">
           <h1 className="text-3xl md:text-5xl font-bold mb-6">Scaffold Based 3D Cell Cultures</h1>
           <p className="text-lg md:text-xl max-w-3xl mb-8">
@@ -122,7 +122,7 @@ const Biomedical = () => {
             </div>
           </div>
           
-          <div className="bg-green-50 border border-green-200 rounded-lg p-8">
+          <div className="bg-[#ded9ba] border border-[#8f9962] rounded-lg p-8">
             <h3 className="text-xl font-semibold mb-4 text-gray-800">Our Solution</h3>
             <p className="text-gray-700 mb-4">
               KosmodeHealth addresses these challenges through innovative approaches to scaffold and bio-ink development. We formulate bio-inks using plant proteins isolated from food processing wastes, providing a sustainable and cost-effective alternative to animal-derived materials.
@@ -146,9 +146,9 @@ const Biomedical = () => {
                   <Printer size={32} />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-center text-gray-800">Extraction and Valorisation Services</h3>
+              <h3 className="text-xl font-semibold mb-4 text-center text-gray-800">Custom Bioink</h3>
               <p className="text-gray-700 text-center">
-                We tailor bio-inks and scaffolds to meet specific research or clinical needs, providing customized solutions for tissue engineering applications.
+                We develop tailored bioinks formulated to meet the specific needs of your bioprinting applications.
               </p>
             </div>
             
@@ -158,9 +158,9 @@ const Biomedical = () => {
                   <Beaker size={32} />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-center text-gray-800">Functional Food Formulation Services</h3>
+              <h3 className="text-xl font-semibold mb-4 text-center text-gray-800">Scaffold Design Services</h3>
               <p className="text-gray-700 text-center">
-                We provide expertise and guidance on tissue engineering and regenerative medicine projects, helping researchers and clinicians achieve optimal results.
+                Our expert team will collaborate with you to design complex, biomimetic scaffolds optimized for tissue growth. 
               </p>
             </div>
             
@@ -170,9 +170,9 @@ const Biomedical = () => {
                   <Microscope size={32} />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-center text-gray-800">Consulting and Training</h3>
+              <h3 className="text-xl font-semibold mb-4 text-center text-gray-800">Fabrication Services</h3>
               <p className="text-gray-700 text-center">
-                We offer a range of customized micron-size synthetic scaffolds and PPC® Scaffolds. Contact us for more information on our available products.
+                Using state-of-the-art 3D bioprinters and advanced manufacturing techniques, we bring your tissue engineering concepts to life. We offer precision fabrication of custom scaffolds and biological constructs with high reproducibility and accuracy.
               </p>
             </div>
           </div>

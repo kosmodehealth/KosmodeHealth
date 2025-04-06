@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaGraduationCap } from 'react-icons/fa';
 import { gsap } from 'gsap';
 import './action.css';

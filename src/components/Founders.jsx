@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FaLinkedin } from "react-icons/fa";
 
 const Founders = () => {
   const sectionRef = useRef(null);
@@ -74,13 +75,13 @@ const Founders = () => {
   };
 
   return (
-    <section id="founders" className="py-16 bg-green-50" ref={sectionRef}>
+    <section id="founders" className="py-16 bg-[#8f9962]" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4" ref={titleRef}>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#ded9ba] mb-4" ref={titleRef}>
             Our Founders
           </h2>
-          <div className="h-1 bg-green-500 mx-auto" ref={dividerRef}></div>
+          <div className="h-1 bg-[#ded9ba] mx-auto" ref={dividerRef}></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -97,16 +98,17 @@ const Founders = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-green-800 text-center mb-4">Florence Leong</h3>
-              <p className="text-gray-700 mb-4">
-                Former pharmaceutical executive with extensive experience in organizational and market development within top pharmaceutical multinationals, venture capital investment, and management.
-              </p>
-              <p className="text-gray-700 mb-4">
-                Contributes to Singapore's startup ecosystem as an advisor, mentor, instructor, founder, and angel investor.
-              </p>
-              <p className="text-gray-700">
-                Currently serves as an Industry Advisor in the Singapore Biodesign Program, mentor at NUS Enterprise, and Medtech Track Instructor in the LeanLaunchPad Program.
-              </p>
+              <h3 className="text-2xl font-bold text-[#8f9962] text-center mb-4">Florence Leong</h3>
+              <div className="flex justify-center">
+                <a 
+                  href="https://www.linkedin.com/in/florenceleong/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#0077B5] hover:text-[#005582] transition-colors duration-300"
+                >
+                  <FaLinkedin size={32} />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -123,16 +125,17 @@ const Founders = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-green-800 text-center mb-4">Dr. Huang Dejian</h3>
-              <p className="text-gray-700 mb-4">
-                Associate Professor and Deputy Head of the Department of Food Science Technology at the National University of Singapore.
-              </p>
-              <p className="text-gray-700 mb-4">
-                Recognized as one of the most cited agri-scientists globally in 2014 and 2015 by Thomson Reuters.
-              </p>
-              <p className="text-gray-700">
-                Serves as an Associate Editor for the Journal of Food and has been honored with the Suzhou Industrial Park Talent Program award.
-              </p>
+              <h3 className="text-2xl font-bold text-[#8f9962] text-center mb-4">Dr. Huang Dejian</h3>
+              <div className="flex justify-center">
+                <a 
+                  href="https://www.linkedin.com/in/huang-dejian-02972414/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-[#0077B5] hover:text-[#005582] transition-colors duration-300"
+                >
+                  <FaLinkedin size={32} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
