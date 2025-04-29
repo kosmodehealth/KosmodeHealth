@@ -61,7 +61,7 @@ const Hero = () => {
           </h1>
           <p
             ref={paragraphRef}
-            className="-mb-20 text-xl md:text-2xl text-[#8f9962] max-w-3xl mx-auto opacity-0"
+            className="md:-mb-20 text-xl md:text-2xl text-[#8f9962] max-w-3xl mx-auto opacity-0"
           >
             Sustainable solutions for human nutrition and health through innovative technology
           </p>

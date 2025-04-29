@@ -3,7 +3,7 @@ import Footer from '../Footer';
 import { DollarSign, Recycle, Beaker, BarChart, Home, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import "../standards/buttons.css";
-import Products from "../Products"
+import Products from "./Products"
 
 const Agrifood = () => {
   const location = useLocation();

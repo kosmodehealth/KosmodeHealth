@@ -46,10 +46,10 @@ const Navbar = () => {
             Industries
           </span>
           <span
-            onClick={() => scrollToSection('#products')}
+            onClick={() => scrollToSection('#testimonials')}
             className="text-[#ded9ba] hover:text-green-900 cursor-pointer"
           >
-            Products
+            Testimonials
           </span>
           <span
             onClick={() => scrollToSection('#contact')}

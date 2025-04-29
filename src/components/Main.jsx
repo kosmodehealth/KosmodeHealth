@@ -7,6 +7,7 @@ import Technologies from './Technologies';
 import Industries from './Industries';
 import Footer from './Footer';
 import CallToAction from './subpages/CallToAction';
+import Testimonials from './Testimonials';
 
 const Main = () => {
   return (
@@ -22,6 +23,7 @@ const Main = () => {
       <Founders />
       <Technologies />
       <Industries />
+      <Testimonials />
       <Footer />
     </div>
   );

@@ -1,9 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const About = () => {
-  // Refs for animation targets
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const dividerRef = useRef(null);
@@ -11,91 +9,43 @@ const About = () => {
   const rightColumnRef = useRef(null);
   
   useEffect(() => {
-    // Register ScrollTrigger plugin
-    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      // Title and divider animation
+      gsap.fromTo(
+        titleRef.current,
+        { y: -50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1 }
+      );
+      
+      gsap.fromTo(
+        dividerRef.current,
+        { width: 0, opacity: 0 },
+        { width: "6rem", opacity: 1, duration: 1.2, delay: 0.3 }
+      );
+      
+      // Left column text animation
+      gsap.fromTo(
+        leftColumnRef.current.querySelectorAll('p'),
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, stagger: 0.3 }
+      );
+      
+      // Right column card animation
+      gsap.fromTo(
+        rightColumnRef.current,
+        { x: 50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1 }
+      );
+      
+      // Mission sections animation
+      gsap.fromTo(
+        rightColumnRef.current.querySelectorAll('div > div'),
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.4, delay: 0.5 }
+      );
+    }, sectionRef);
     
-    // Title and divider animation
-    gsap.fromTo(
-      titleRef.current,
-      { y: -50, opacity: 0 },
-      { 
-        y: 0, 
-        opacity: 1, 
-        duration: 1,
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 80%",
-        }
-      }
-    );
-    
-    gsap.fromTo(
-      dividerRef.current,
-      { width: 0, opacity: 0 },
-      { 
-        width: "6rem", 
-        opacity: 1, 
-        duration: 1.2,
-        delay: 0.3,
-        scrollTrigger: {
-          trigger: dividerRef.current,
-          start: "top 80%",
-        }
-      }
-    );
-    
-    // Left column text animation
-    gsap.fromTo(
-      leftColumnRef.current.querySelectorAll('p'),
-      { x: -50, opacity: 0 },
-      { 
-        x: 0, 
-        opacity: 1, 
-        duration: 1,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: leftColumnRef.current,
-          start: "top 75%",
-        }
-      }
-    );
-    
-    // Right column card animation
-    gsap.fromTo(
-      rightColumnRef.current,
-      { x: 50, opacity: 0 },
-      { 
-        x: 0, 
-        opacity: 1, 
-        duration: 1,
-        scrollTrigger: {
-          trigger: rightColumnRef.current,
-          start: "top 75%",
-        }
-      }
-    );
-    
-    // Mission sections animation
-    gsap.fromTo(
-      rightColumnRef.current.querySelectorAll('div > div'),
-      { y: 30, opacity: 0 },
-      { 
-        y: 0, 
-        opacity: 1, 
-        duration: 0.8,
-        stagger: 0.4,
-        delay: 0.5,
-        scrollTrigger: {
-          trigger: rightColumnRef.current,
-          start: "top 70%",
-        }
-      }
-    );
-    
-    // Clean up animations on component unmount
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
