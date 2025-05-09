@@ -67,9 +67,9 @@ const Menu = ({ isMenuOpen }) => {
                 <button 
                   className="button-57 w-[200px] md:w-[300px] transition-colors duration-300 font-medium tracking-wide" 
                   data-content="Click to Scroll" 
-                  onClick={() => scrollToSection('#products')}
+                  onClick={() => scrollToSection('#testimonials')}
                 >
-                  Product
+                  Testimonials
                 </button>
                 <button 
                   className="button-57 w-[200px] md:w-[300px] transition-colors duration-300 font-medium tracking-wide" 

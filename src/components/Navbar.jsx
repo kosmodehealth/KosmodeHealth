@@ -11,11 +11,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
           {/* Logo */}
-          <img
-            src="/KosmodeHealth/images/Kosmodehealth.png"
-            alt="KosmodeHealth Logo"
-            className="h-8 w-auto mr-2"
-          />
+          <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center mr-2 -py-4">
+            <img
+              src="/KosmodeHealth/images/Kosmodehealth.png"
+              alt="KosmodeHealth Logo"
+              className="h-7 w-7"
+            />
+          </div>
           <span className="text-[#ded9ba] font-bold text-2xl">KosmodeHealth</span>
         </div>
 

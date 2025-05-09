@@ -64,7 +64,7 @@ const Footer = () => {
                 info@kosmodehealth.com
               </span>
             </p>
-            <p className="mb-4">Address: 83 Science Park Drive #02-03/4 Singapore 118258</p>
+            <p className="mb-4">Address: 101 Cecil Street #26-01 Tong Eng Building Singapore 069533</p>
             
             <div className="flex space-x-4">
               <span onClick={() => window.open('https://www.facebook.com/KosmodeHealthSG/', '_blank')} className="text-[#ded9ba] hover:text-green-600 transition duration-300 cursor-pointer">
