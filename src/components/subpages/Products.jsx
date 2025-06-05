@@ -160,7 +160,7 @@ const Products = () => {
                   className="button-85"
                   onClick={() => window.location.href = 'https://www.w0wnoodle.com/'}
                 >
-                  Learn More
+                  Link to Additional W0W® Noodle Information
                 </button>
               </div>
             </div>
