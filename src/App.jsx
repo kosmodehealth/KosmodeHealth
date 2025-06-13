@@ -5,7 +5,7 @@ import Biomedical from './components/subpages/Biomedical';
 
 function App() {
   return (
-    <Router basename="/KosmodeHealth">
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="Agrifood" element={<Agrifood />} />
