@@ -13,7 +13,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center mr-2 -py-4">
             <img
-              src="/KosmodeHealth/images/Kosmodehealth.png"
+              src="/images/Kosmodehealth.png"
               alt="KosmodeHealth Logo"
               className="h-7 w-7"
             />

@@ -104,7 +104,7 @@ const Technologies = () => {
           {[
             {
               title: "Plant Extraction Technology",
-              img: "/KosmodeHealth/images/plant-extraction.jpg",
+              img: "/images/plant-extraction.jpg",
               points: [
                 "Sustainable, halal-certifiable extraction process",
                 "Lower land footprint and reduced energy consumption",
@@ -115,7 +115,7 @@ const Technologies = () => {
             },
             {
               title: "Plant Protein Composite (PPC™) Bio-Ink",
-              img: "/KosmodeHealth/images/bioink-3.png",
+              img: "/images/bioink-3.png",
               points: [
                 "Blends plant proteins with other polymers",
                 "Cost-effective alternative to animal protein-based biomaterials",
@@ -126,7 +126,7 @@ const Technologies = () => {
             },
             {
               title: "3D Scaffold Printing",
-              img: "/KosmodeHealth/images/scaffolding.jpg",
+              img: "/images/scaffolding.jpg",
               points: [
                 "Customizable 3D-printed scaffolds",
                 "Supports cell growth and differentiation",

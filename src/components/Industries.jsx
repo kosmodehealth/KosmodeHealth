@@ -67,7 +67,7 @@ const Industries = () => {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Agrifood Industry */}
           <div ref={agrifoodCardRef} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-            <img src="/KosmodeHealth/images/agrifood.jpg" alt="Agrifood Industry" className="w-full h-48 object-cover" />
+            <img src="/images/agrifood.jpg" alt="Agrifood Industry" className="w-full h-48 object-cover" />
             <div className="h-16 bg-[#ded9ba] flex items-center">
               <h3 className="text-2xl font-bold text-[#8f9962] px-6">Agrifood Industry</h3>
             </div>
@@ -100,7 +100,7 @@ const Industries = () => {
 
           {/* Biomedical Industry */}
           <div ref={biomedicalCardRef} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-            <img src="/KosmodeHealth/images/biomed.jpg" alt="Biomedical Industry" className="w-full h-48 object-cover" />
+            <img src="/images/biomed.jpg" alt="Biomedical Industry" className="w-full h-48 object-cover" />
             <div className="h-16 bg-[#ded9ba] flex items-center">
               <h3 className="text-2xl font-bold text-[#8f9962] px-6">Biomedical Industry</h3>
             </div>

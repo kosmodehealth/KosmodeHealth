@@ -93,7 +93,7 @@ const Founders = () => {
             <div className="p-8">
               <div className="w-64 h-64 rounded-full bg-green-200 mx-auto mb-6 flex items-center justify-center overflow-hidden">
                 <img
-                  src="/KosmodeHealth/images/florence-leong.jpg"
+                  src="/images/florence-leong.jpg"
                   alt="Florence Leong"
                   className="w-full h-full object-cover"
                 />
@@ -120,7 +120,7 @@ const Founders = () => {
             <div className="p-8">
               <div className="w-64 h-64 rounded-full bg-green-200 mx-auto mb-6 flex items-center justify-center overflow-hidden">
                 <img
-                  src="/KosmodeHealth/images/HUANG-Dejian-1.jpg"
+                  src="/images/HUANG-Dejian-1.jpg"
                   alt="Dr. Huang Dejian"
                   className="w-full h-full object-cover"
                 />

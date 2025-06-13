@@ -139,7 +139,7 @@ const Products = () => {
             <div className="h-64 bg-[#ded9ba] flex items-center justify-center overflow-hidden">
               <img 
                 ref={imageRef} 
-                src="/KosmodeHealth/images/noodles.png" 
+                src="/images/noodles.png" 
                 alt="W0W Noodles" 
                 className="max-h-full transition-transform duration-300"
               />
