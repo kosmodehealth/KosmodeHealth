@@ -153,7 +153,7 @@ const Products = () => {
                 <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold">Gut Health</span>
               </div>
               <p className="text-white mb-6">
-                An earth friendly functional staple to address sub-optimal consumption of protein and fibre,made with repurposed peanut protein and sweet potato fibre.
+                An earth friendly functional staple to address sub-optimal consumption of protein and fibre, made with repurposed peanut protein and sweet potato fibre.
               </p>
               <div className="flex justify-center">
                 <button
@@ -179,15 +179,15 @@ const Products = () => {
               />
             </div>
             <div ref={contentRef} className="p-6">
-              <h3 className="text-2xl font-bold text-[#ded9ba] mb-4">W0W® Noodles</h3>
+              <h3 className="text-2xl font-bold text-[#ded9ba] mb-4">W0W® Barley Fresh Noodles</h3>
               <div ref={tagsRef} className="mb-4">
                 <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold mr-2">Zero Glycemic Response</span>
-                <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold mr-2">High Protein</span>
+                <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold mr-2">Source of Protein</span>
                 <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold mr-2">High Fiber</span>
-                <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold">Low Carbs</span>
+                <span className="inline-block bg-[#ded9ba] text-[#8f9962] px-3 py-1 rounded-full text-sm font-semibold">Starchless</span>
               </div>
               <p className="text-white mb-6">
-                Starchless protein-fiber noodles made from valorized spent barley grains. Clinically validated to have zero glycemic response, catering to the nutritional needs of aging and diabetic populations.
+                Starchless and with only 1.1g of carbs, W0W® Barley Fresh is a source of protein & high fibre. It is clinically validated to have 0 Glycemic Response - catering to nutritional needs of the population without the adverse glycemic impact of traditional noodles.
               </p>
               <div className="flex justify-center">
                 <button

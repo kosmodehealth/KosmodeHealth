@@ -84,7 +84,7 @@ const ProTEGO = () => {
               Developed to optimise protein and fibre intake, while being <strong className="text-[#8f9962]">diabetic-friendly</strong> thanks to its <strong className="text-[#8f9962]">minimal glycaemic impact</strong> compared to traditional noodles.
             </p>
             <p className="text-lg text-gray-700 mb-6">
-              Crafted with <strong className="text-[#8f9962]">upcycled peanut protein and sweet potato fibre</strong> to demonstrate the valorisation of food processing by-products into <strong className="text-[#8f9962]">functional nutrition</strong>.
+              Crafted with <strong className="text-[#8f9962]">repurposed peanut protein and sweet potato fibre</strong> to demonstrate the valorisation of food processing by-products into <strong className="text-[#8f9962]">functional nutrition</strong>.
             </p>
             <p className="text-lg text-gray-700">
               <strong className="text-[#8f9962]">ProTEGO™</strong> proves that quality crops can be given a second life, delivering essential nutrition without compromising on taste.

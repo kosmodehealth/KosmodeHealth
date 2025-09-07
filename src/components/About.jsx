@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { Link, useLocation } from 'react-router-dom';
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -81,12 +82,11 @@ const About = () => {
               <p className="text-white mb-2">
                 We believe food is a pillar of health and staple foods can be therapeutic solutions. 
               </p>
-              <div 
-                className="text-#ded9ba hover:text-green-900 transition-colors duration-200 cursor-pointer"
-                onClick={() => window.location.href = 'https://www.w0wnoodle.com/'}
-              >
-                Learn more about ProTEGO™ - Our latest innovation for health of people and earth.
-              </div>
+              <Link to="/Agrifood">
+                <p className="text-[#ded9ba] hover:text-green-900 transition-colors duration-200 cursor-pointer">
+                  Learn more about ProTEGO™ - Our latest innovation for health of people and earth.
+                </p>
+              </Link>
             </div>
           </div>
         </div>

@@ -53,6 +53,12 @@ const Agrifood = () => {
       image: "./images/rice.jpg",
       description: "Our functional rice products incorporate valorized ingredients from food processing waste, creating a more nutritious alternative to traditional rice. With enhanced protein content and fiber, this rice helps promote satiety while maintaining the cooking characteristics and versatility consumers expect from rice products."
     },
+    {
+      id: 8,
+      title: "ProTEGO™",
+      image: "./images/protego-pic.jpg",
+      description: "ProTEGO™ noodles are made from repurposed sweet potato and peanut by-products, offering a protein- and fibre-rich staple with only 27g net carbs per 100g. They retain the familiar texture and taste of traditional noodles while delivering a lower glycemic response, making them ideal for supporting muscle health, digestion, and steady energy."
+    },
   ];
 
   useEffect(() => {
