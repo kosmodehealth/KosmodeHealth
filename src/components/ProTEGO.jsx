@@ -113,7 +113,7 @@ const ProTEGO = () => {
               </div>
               
               <div className="benefit-item bg-white/10 p-4 rounded-lg">
-                <h4 className="text-xl font-semibold text-[#ded9ba] mb-2">27g Carbs / 100g</h4>
+                <h4 className="text-xl font-semibold text-[#ded9ba] mb-2">40g Carbs / 100g</h4>
                 <p className="text-white">Suitable for diabetes-friendly and low-carb diets</p>
               </div>
               
